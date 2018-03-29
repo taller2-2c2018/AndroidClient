@@ -2,8 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    
-
 
     defaultConfig {
         applicationId "com.example.fernandon.android_client"
@@ -11,8 +9,6 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-
-
     }
 
     buildTypes {
@@ -21,10 +17,13 @@ android {
            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
        }
     }
-
 }
 
 dependencies {
     implementation project(':TALLER2')
     implementation project(':base')
+    //implementation 'com.facebook.android:facebook-android-sdk:4.31.0'
+    //implementation project('com.facebook.android:facebook-android-sdk-4.31.0')
+    //compile 'com.facebook.android:facebook-android-sdk-4.31.0'
 }
+

@@ -12,6 +12,15 @@
     <string name="permission_rationale">Contacts permissions are needed for providing email completions.</string>
     <string name="prompt_username">Usuario</string>
     <string name="title_activity_main">MainActivity</string>
+
+    <string name="action_logout">Salir</string>
+    <string name="action_perfil">Mi Perfil</string>
+    <string name="hint_search">Buscar</string>
+
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="facebook_app_id">188344395278473</string>
+    <string name="fb_login_protocol_scheme">fb188344395278473</string>
+    
 </resources>
