@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             return true;
         }
         if (id == R.id.action_perfil){
-            exit();
+            goPerfil();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -91,6 +91,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     public void exit(){
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+    public void goPerfil(){
+        Intent intent = new Intent(this, MiPerfilActivity.class);
         startActivity(intent);
     }
 
