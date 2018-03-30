@@ -6,17 +6,22 @@
     android:layout_height="match_parent"
     tools:context="com.example.fernandon.android_client.TALLER2.MainActivity$PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/section_label"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        android:layout_height="wrap_content">
 
+        <include layout="@layout/activity_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_eleccion"
+            android:gravity="center_horizontal"/>
+
+        <include layout="@layout/activity_historias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/menu_eleccion"/>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

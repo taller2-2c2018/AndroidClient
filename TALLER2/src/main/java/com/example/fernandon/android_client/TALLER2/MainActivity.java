@@ -136,10 +136,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-            if (getArguments().getInt(ARG_SECTION_NUMBER) == 1 || getArguments().getInt(ARG_SECTION_NUMBER) == 3){
-                View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-                TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-                textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            if (getArguments().getInt(ARG_SECTION_NUMBER) == 1 ){
+                View rootView = inflater.inflate(R.layout.activity_primary, container, false);
+                //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
                 return rootView;
             }
             else{
@@ -150,7 +150,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             }
         }
     }
-
+    public void pantallaPPAL(){
+        Intent intent = new Intent(this, MiPerfilActivity.class);
+        startActivity(intent);
+    }
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -171,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 1;
         }
     }
 }
