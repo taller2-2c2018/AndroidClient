@@ -4,6 +4,8 @@
     <string name="prompt_email">Usuario</string>
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Iniciar SESION</string>
+    <string name="action_register">REGISTRATE</string>
+
     <string name="action_sign_in_short">Crear nueva cuenta</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
