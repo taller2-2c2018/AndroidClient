@@ -3,7 +3,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Usuario</string>
     <string name="prompt_password">Contraseña</string>
-    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in">Iniciar SESION</string>
     <string name="action_sign_in_short">Crear nueva cuenta</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -22,6 +22,7 @@
 
     <string name="facebook_app_id">188344395278473</string>
     <string name="fb_login_protocol_scheme">fb188344395278473</string>
+
     <string name="title_activity_mi_perfil"></string>
     <string name="large_text">Historias del usuario</string>
     <string name="nombreText">Fernando Nitz</string>

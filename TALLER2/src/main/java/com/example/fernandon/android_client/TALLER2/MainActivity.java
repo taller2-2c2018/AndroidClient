@@ -17,8 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
+
+import static com.example.fernandon.android_client.TALLER2.R.id.buttonMenu;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
@@ -61,7 +64,56 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             }
         });
 
+//        Button menuButton = findViewById(buttonMenu);
+//        menuButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//              goMenu();
+//            }
+//        });
+
+        /*
+        Button menuChat =  findViewById(R.id.buttonChat);
+        menuChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goChat();
+            }
+        });
+        Button menuAmigos =  findViewById(R.id.buttonAmigos);
+        menuAmigos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goAmigos();
+            }
+        });
+        Button menuNotif =  findViewById(R.id.buttonNotificaciones);
+        menuNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goNotif();
+            }
+        });*/
+
     }
+
+    public void goMenu(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+    public void goChat(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+    public void goAmigos(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+    public void goNotif(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

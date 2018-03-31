@@ -3,38 +3,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:gravity="center_vertical">
+        <ImageButton
+            android:id="@+id/buttonMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal"
+            android:src="@drawable/ic_home"/>
 
-        android:text="Menu" />
+        <ImageButton
+            android:id="@+id/buttonAmigos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:layout_alignLeft="@+id/button1"
+            android:src="@drawable/ic_group_add_black_18dp" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/buttonNotificaciones"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_notifications_active_black_18dp"
+            android:layout_alignLeft="@+id/button2" />
+
+        <ImageButton
+            android:id="@+id/buttonChat"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_sms_black_18dp"
+            android:layout_alignLeft="@+id/button3"/>
+
+        <ImageButton
+            android:id="@+id/buttonOptions"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_menu_black_18dp"
+            android:layout_alignLeft="@+id/button4"/>
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_alignLeft="@+id/button1"
-        android:text="Amigos" />
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/buttonIngresaHistoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignLeft="@+id/button5"
+            android:text="¿En qué estas pensando?" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_alignLeft="@+id/button2"
-        android:text="Notif" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_alignLeft="@+id/button3"
-        android:text="Chat" />
+    </LinearLayout>
 
 </LinearLayout>

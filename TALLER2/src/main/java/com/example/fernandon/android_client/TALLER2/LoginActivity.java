@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 //import com.facebook.*;
-//import com.facebook.appevents.AppEventsLogger;
+//import com.
 
 /**
  * A login screen that offers login via email/password.
@@ -58,5 +58,6 @@ public class LoginActivity extends AppCompatActivity {
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
     }
 }
