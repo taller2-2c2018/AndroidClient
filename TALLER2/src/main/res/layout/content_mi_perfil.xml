@@ -8,10 +8,39 @@
     tools:context="com.example.fernandon.android_client.TALLER2.MiPerfilActivity"
     tools:showIn="@layout/activity_mi_perfil">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:id="@+id/alineacion_boton_historia"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_historia_larga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/layout_historia_larga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/layout_historia_larga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/layout_historia_larga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/layout_historia_larga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/layout_historia_larga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/layout_historia_larga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!--ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listaDeHistorias"/-->
+
+    </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

@@ -1,6 +1,9 @@
 package com.example.fernandon.android_client.TALLER2;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,9 +20,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.fernandon.android_client.TALLER2.R.id.buttonMenu;
 
@@ -64,37 +76,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             }
         });
 
-//        Button menuButton = findViewById(buttonMenu);
-//        menuButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//              goMenu();
-//            }
-//        });
-
-        /*
-        Button menuChat =  findViewById(R.id.buttonChat);
-        menuChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goChat();
-            }
-        });
-        Button menuAmigos =  findViewById(R.id.buttonAmigos);
-        menuAmigos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goAmigos();
-            }
-        });
-        Button menuNotif =  findViewById(R.id.buttonNotificaciones);
-        menuNotif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goNotif();
-            }
-        });*/
-
     }
 
     public void goMenu(){
@@ -102,10 +83,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         startActivity(intent);
     }
     public void goChat(){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
-    public void goAmigos(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
@@ -187,19 +164,58 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-            if (getArguments().getInt(ARG_SECTION_NUMBER) == 1 ){
-                View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-                //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-                //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-                return rootView;
-            }
-            else{
-                View rootView = inflater.inflate(R.layout.activity_primary, container, false);
-                //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-                //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-                return rootView;
-            }
+            ImageButton b_menu = (ImageButton) rootView.findViewById(R.id.buttonMenu);
+            b_menu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
+                    ll.removeAllViews();
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_historias, null));
+                }
+            });
+
+            ImageButton b_amigos = (ImageButton) rootView.findViewById(R.id.buttonAmigos);
+            b_amigos.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
+                    ll.removeAllViews();
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_mi_perfil, null));
+                }
+            });
+
+            ImageButton b_notificaciones = (ImageButton) rootView.findViewById(R.id.buttonNotificaciones);
+            b_notificaciones.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Context context = rootView.getContext();
+                    Toast.makeText(context, "test3", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            ImageButton b_chat = (ImageButton) rootView.findViewById(R.id.buttonChat);
+            b_chat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Context context = rootView.getContext();
+                    Toast.makeText(context, "test4", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            ImageButton b_options = (ImageButton) rootView.findViewById(R.id.buttonOptions);
+            b_options.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Context context = rootView.getContext();
+                    Toast.makeText(context, "test5", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+            return rootView;
+
         }
     }
     public void pantallaPPAL(){
