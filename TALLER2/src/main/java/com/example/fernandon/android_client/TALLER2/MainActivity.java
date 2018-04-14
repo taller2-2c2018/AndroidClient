@@ -81,6 +81,20 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     }
 
+    public void goMenu(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+    public void goChat(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+    public void goNotif(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
