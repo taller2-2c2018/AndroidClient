@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +30,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.facebook.login.LoginManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +57,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -85,33 +88,40 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return true;
     }
 
+    public void exit(View v){
+        //Intent myIntent = new Intent(this.getActivity(), LoginActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        LoginManager.getInstance().logOut();
+    }
+    public void goPerfil(View v){
+        //Intent myIntent = new Intent(PlaceholderFragment.this.getActivity(), MiPerfilActivity.class);
+        Intent intent = new Intent(this, MiPerfilActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
+        //int id = item.getItemId();
+        /*
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout){
+        if (id == R.id.id_salir_l){
             exit();
             return true;
         }
-        if (id == R.id.action_perfil){
+        if (id == R.id.id_mi_perfil_l){
             goPerfil();
             return true;
         }
-        return super.onOptionsItemSelected(item);
+        */
+        return false;
+        //return super.onOptionsItemSelected(item);
     }
 
-    public void exit(){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
-    public void goPerfil(){
-        Intent intent = new Intent(this, MiPerfilActivity.class);
-        startActivity(intent);
-    }
+
 
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -131,6 +141,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
          * The fragment argument representing the section number for this
          * fragment.
          */
+
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setHasOptionsMenu(true);
+        }
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
@@ -147,6 +163,32 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             fragment.setArguments(args);
             return fragment;
         }
+
+        public void exit(View v){
+            Intent myIntent = new Intent(PlaceholderFragment.this.getActivity(), LoginActivity.class);
+            //Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(myIntent);
+            LoginManager.getInstance().logOut();
+        }
+        public void goPerfil(View v){
+            Intent myIntent = new Intent(PlaceholderFragment.this.getActivity(), MiPerfilActivity.class);
+            //Intent intent = new Intent(this, MiPerfilActivity.class);
+            startActivity(myIntent);
+        }
+
+        public void aceptarUsuario(View v){
+            v.setVisibility(View.GONE);
+        }
+        public void rechazarUsuario(View v){
+            v.setVisibility(View.GONE);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            return false;
+            //return super.onOptionsItemSelected(item);
+        }
+
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -168,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 public void onClick(View v) {
                     LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
                     ll.removeAllViews();
-                    ll.addView( getLayoutInflater().inflate(R.layout.activity_mi_perfil, null));
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_amistades_nuevas, null));
                 }
             });
 
@@ -176,8 +218,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             b_notificaciones.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final Context context = rootView.getContext();
-                    Toast.makeText(context, "test3", Toast.LENGTH_SHORT).show();
+                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
+                    ll.removeAllViews();
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_notificaciones, null));
                 }
             });
 
@@ -185,8 +228,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             b_chat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final Context context = rootView.getContext();
-                    Toast.makeText(context, "test4", Toast.LENGTH_SHORT).show();
+                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
+                    ll.removeAllViews();
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_mi_perfil, null));
                 }
             });
 
@@ -194,11 +238,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             b_options.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final Context context = rootView.getContext();
-                    Toast.makeText(context, "test5", Toast.LENGTH_SHORT).show();
+                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
+                    ll.removeAllViews();
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_options2, null));
                 }
             });
-
 
             return rootView;
 

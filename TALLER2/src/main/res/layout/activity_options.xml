@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/gris_oscuro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/alineacion_boton_historia"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_perfil"
+                android:id="@+id/id_perfilusuario"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <include layout="@layout/layout_cerrar_sesion"
+                android:clickable="true"
+                android:id="@+id/id_cerrarsesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
