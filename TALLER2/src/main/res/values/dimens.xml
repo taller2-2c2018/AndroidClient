@@ -6,18 +6,4 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
-
-    <dimen name="card_view_margin_botton">10dp</dimen>
-    <dimen name="card_view_margin_top">10dp</dimen>
-    <dimen name="card_view_margin_right">10dp</dimen>
-    <dimen name="card_view_margin_left">10dp</dimen>
-
-    <dimen name="linearl_margin_botton">5dp</dimen>
-    <dimen name="linearl_margin_top">5dp</dimen>
-    <dimen name="linearl_margin_right">5dp</dimen>
-    <dimen name="linearl_margin_left">5dp</dimen>
-
-
-
-
 </resources>
