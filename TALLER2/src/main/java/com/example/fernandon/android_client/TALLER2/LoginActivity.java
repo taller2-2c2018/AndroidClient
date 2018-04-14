@@ -8,9 +8,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-//import com.facebook.*;
-//import com.
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 
 /**
  * A login screen that offers login via email/password.
@@ -26,14 +28,12 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPasswordView, mUserName;
     private View mProgressView;
     private View mLoginFormView;
+    private CallbackManager callbackManager; //PARA FACEBOOK
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        //FacebookSdk.sdkInitialize(getApplicationContext();
-        //AppEventsLogger.activateApp(this);
 
         // declaring obejct of EditText control
         mUserName = (EditText) findViewById(R.id.txtUserName);
@@ -58,6 +58,23 @@ public class LoginActivity extends AppCompatActivity {
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+        callbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(callbackManager,
+        new FacebookCallback<LoginResult>() {
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+            Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(MainIntent);
+            Toast.makeText(LoginActivity.this,"You are Sign in Successfuly.", Toast.LENGTH_LONG).show();
+        }
+        @Override
+        public void onCancel() {
+            Toast.makeText(LoginActivity.this,"Usuario o contraseña de Facebook incorrecta", Toast.LENGTH_LONG).show();
+        }
 
+        @Override
+        public void onError(FacebookException error) {
+            Toast.makeText(LoginActivity.this,"Facebook error.", Toast.LENGTH_LONG).show();
+        }}); //PARA FACEBOOK
     }
 }
