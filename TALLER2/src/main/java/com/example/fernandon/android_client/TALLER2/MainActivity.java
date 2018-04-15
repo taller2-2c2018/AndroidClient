@@ -24,13 +24,16 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.fernandon.android_client.TALLER2.model.Amistad;
+import com.example.fernandon.android_client.TALLER2.model.Conversacion;
 import com.example.fernandon.android_client.TALLER2.model.Historia;
 import com.example.fernandon.android_client.TALLER2.model.ListadoAmistadesFragment;
+import com.example.fernandon.android_client.TALLER2.model.ListadoConversacionesFragment;
 import com.example.fernandon.android_client.TALLER2.model.ListadoHistoriasFragment;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,
                                                             ListadoAmistadesFragment.AmistadesListListener,
-                                                            ListadoHistoriasFragment.HistoriasListListener{
+                                                            ListadoHistoriasFragment.HistoriasListListener,
+                                                            ListadoConversacionesFragment.ConversacionesListListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -145,6 +148,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         intent.setClass(this, MiPerfilActivity.class);
         startActivity(intent);
     }
+    @Override
+    public void onAmistadClicked(Conversacion conversacion){
+        Intent intent = new Intent();
+        intent.setClass(this, MiPerfilActivity.class);
+        startActivity(intent);
+    }
 
     /**
      * A placeholder fragment containing a simple view.
@@ -208,8 +217,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             b_chat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final Context context = rootView.getContext();
-                    Toast.makeText(context, "test4", Toast.LENGTH_SHORT).show();
+                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
+                    ll.removeAllViews();
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_conversaciones, null));
+
                 }
             });
 

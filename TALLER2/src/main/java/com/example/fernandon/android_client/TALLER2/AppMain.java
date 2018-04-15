@@ -4,8 +4,10 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.fernandon.android_client.TALLER2.services.AmistadesService;
+import com.example.fernandon.android_client.TALLER2.services.ConversacionService;
 import com.example.fernandon.android_client.TALLER2.services.HistoriasService;
 import com.example.fernandon.android_client.TALLER2.services.MockAmistadesService;
+import com.example.fernandon.android_client.TALLER2.services.MockConversacionService;
 import com.example.fernandon.android_client.TALLER2.services.MockHistoriasService;
 import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
 
@@ -23,6 +25,7 @@ public class AppMain extends Application {
         ServiceLocator.init(applicationContext);
         ServiceLocator.bindCustomServiceImplementation(AmistadesService.class, MockAmistadesService.class);
         ServiceLocator.bindCustomServiceImplementation(HistoriasService.class, MockHistoriasService.class);
+        ServiceLocator.bindCustomServiceImplementation(ConversacionService.class, MockConversacionService.class);
     }
 
 }
