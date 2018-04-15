@@ -102,14 +102,14 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout){
+/*        if (id == R.id.action_logout){
             exit();
             return true;
         }
         if (id == R.id.action_perfil){
             goPerfil();
             return true;
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
