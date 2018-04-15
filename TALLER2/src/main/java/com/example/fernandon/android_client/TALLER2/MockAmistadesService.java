@@ -67,11 +67,11 @@ public class MockAmistadesService implements AmistadesService{
 
         mAmistades = new ArrayList<>();
         Amistad c1 = new Amistad("Fernando Nitz");
-        c1.setDescription("sisi, probando");
+        //c1.setDescription("sisi, probando");
 
 
         Amistad c2 = new Amistad("Manuel Ortiz");
-        c2.setDescription("eee loco prueba");
+        //c2.setDescription("eee loco prueba");
 
 
         //c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.pizzaprueba2));

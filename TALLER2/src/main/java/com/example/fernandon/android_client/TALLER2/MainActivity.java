@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 public void onClick(View v) {
                     LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
                     ll.removeAllViews();
-                    ll.addView( getLayoutInflater().inflate(R.layout.activity_mi_perfil, null));
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_amistades_nuevas, null));
                 }
             });
 
