@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import com.example.fernandon.android_client.TALLER2.Amistad;
 import com.example.fernandon.android_client.TALLER2.AmistadesService;
 import com.example.fernandon.android_client.TALLER2.ServiceLocator;
-import com.example.fernandon.android_client.R;
+//import com.example.fernandon.android_client.R;
 import com.example.fernandon.android_client.TALLER2.AmistadesListAdapter;
 
 
@@ -22,7 +22,7 @@ public class ListadoAmistadesFragment extends Fragment {
 
 
     public interface AmistadesListListener {
-        void onCommerceClicked(Amistad amistad);
+        void onAmistadClicked(Amistad amistad);
     }
 
     public ListadoAmistadesFragment() {
@@ -42,8 +42,8 @@ public class ListadoAmistadesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = container.getChildAt(0);
-        //View view = inflater.inflate(R.layout.fragment_amistades_nuevas, container, false);
+        //View view = container.getChildAt(0);
+        View view = inflater.inflate(R.layout.fragment_amistades_nuevas, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {

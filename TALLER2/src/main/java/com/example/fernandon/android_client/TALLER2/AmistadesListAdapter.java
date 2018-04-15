@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.fernandon.android_client.TALLER2.Amistad;
 import com.example.fernandon.android_client.TALLER2.ListadoAmistadesFragment;
-import com.example.fernandon.android_client.R;
+//import com.example.fernandon.android_client.R;
 
 import java.util.List;
 
@@ -27,14 +27,14 @@ public class AmistadesListAdapter extends RecyclerView.Adapter<AmistadesListAdap
 
     public static class AmistadesViewHolder extends RecyclerView.ViewHolder {
         private final View mView;
-//        private final ImageView mPicture;
-  //      private final TextView mName;
+        private final ImageView mPicture;
+        private final TextView mName;
 
         AmistadesViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-            //mPicture = (ImageView) itemView.findViewById(R.id.id_imagencontactonuevo);
-            //mName = (TextView) itemView.findViewById(R.id.id_nomcontactonuevo);
+            mPicture = (ImageView) itemView.findViewById(R.id.id_imagencontactonuevo);
+            mName = (TextView) itemView.findViewById(R.id.id_nomcontactonuevo);
         }
     }
 
@@ -45,23 +45,23 @@ public class AmistadesListAdapter extends RecyclerView.Adapter<AmistadesListAdap
 
     @Override
     public AmistadesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_contacto_pendiente, parent, false);
-        AmistadesViewHolder amistadesViewHolder = new AmistadesViewHolder(parent.getChildAt(0));
-       // AmistadesViewHolder amistadesViewHolder = new AmistadesViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_contacto_pendiente, parent, false);
+       // AmistadesViewHolder amistadesViewHolder = new AmistadesViewHolder(parent.getChildAt(0));
+        AmistadesViewHolder amistadesViewHolder = new AmistadesViewHolder(v);
         return amistadesViewHolder;
     }
 
     @Override
     public void onBindViewHolder(AmistadesViewHolder holder, int position) {
         final Amistad amistad = mAmistades.get(position);
-  //      holder.mPicture.setImageBitmap(amistad.getPicture());
-   //     holder.mName.setText(amistad.getName());
+        holder.mPicture.setImageBitmap(amistad.getPicture());
+        holder.mName.setText(amistad.getName());
 
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAmistadesListListener.onCommerceClicked(amistad);
+                mAmistadesListListener.onAmistadClicked(amistad);
             }
         });
     }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/listAmistadesNuevas"
-    android:name="com.example.fernandon.android_client.TALLER2.FramgmentListadoAmistades"
+    android:name="com.example.fernandon.android_client.TALLER2.ListadoFragmentAmistades"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"

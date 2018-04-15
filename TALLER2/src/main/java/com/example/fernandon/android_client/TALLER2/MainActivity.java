@@ -35,7 +35,8 @@ import java.util.List;
 
 import static com.example.fernandon.android_client.TALLER2.R.id.buttonMenu;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,
+                                                            ListadoAmistadesFragment.AmistadesListListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -135,6 +136,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public boolean onQueryTextChange(String newText) {
         return false;
+    }
+
+    @Override
+    public void onAmistadClicked(Amistad amistad) {
+        Intent intent = new Intent();
+        intent.setClass(this, MiPerfilActivity.class);
+        startActivity(intent);
     }
 
     /**
