@@ -1,14 +1,5 @@
 package com.example.fernandon.android_client.TALLER2;
 
-/**
- * Created by FernandoN on 14/04/2018.
- */
-
-public class ListadoAmistadesFragment {
-}
-/*
-package com.example.fernandon.android_client.TALLER2.utils;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,38 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.fernandon.android_client.TALLER2.model.Amistad;
-import com.example.fernandon.android_client.TALLER2.services.AmistadesService;
-import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
+import com.example.fernandon.android_client.TALLER2.Amistad;
+import com.example.fernandon.android_client.TALLER2.AmistadesService;
+import com.example.fernandon.android_client.TALLER2.ServiceLocator;
 import com.example.fernandon.android_client.R;
-import com.example.fernandon.android_client.TALLER2.adapters.AmistadesListAdapter;
+import com.example.fernandon.android_client.TALLER2.AmistadesListAdapter;
 
 
 public class ListadoAmistadesFragment extends Fragment {
 
     private AmistadesListListener mAmistadesListListener;
 
-    */
-/**
- * This interface must be implemented by activities that contain this
- * fragment to allow an interaction in this fragment to be communicated
- * to the activity and potentially other fragments contained in that
- * activity.
- * <p/>
- * See the Android Training lesson <a href=
- * "http://developer.android.com/training/basics/fragments/communicating.html"
- * >Communicating with Other Fragments</a> for more information.
- *//*
 
     public interface AmistadesListListener {
         void onCommerceClicked(Amistad amistad);
     }
-
-    */
-/**
- * Mandatory empty constructor for the fragment manager to instantiate the
- * fragment (e.g. upon screen orientation changes).
- *//*
 
     public ListadoAmistadesFragment() {
     }
@@ -67,7 +41,9 @@ public class ListadoAmistadesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_amistades_nuevas, container, false);
+
+        View view = container.getChildAt(0);
+        //View view = inflater.inflate(R.layout.fragment_amistades_nuevas, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -101,4 +77,3 @@ public class ListadoAmistadesFragment extends Fragment {
         return ServiceLocator.get(AmistadesService.class);
     }
 }
-*/
