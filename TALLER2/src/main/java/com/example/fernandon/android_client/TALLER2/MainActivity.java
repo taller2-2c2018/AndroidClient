@@ -24,10 +24,13 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.fernandon.android_client.TALLER2.model.Amistad;
+import com.example.fernandon.android_client.TALLER2.model.Historia;
 import com.example.fernandon.android_client.TALLER2.model.ListadoAmistadesFragment;
+import com.example.fernandon.android_client.TALLER2.model.ListadoHistoriasFragment;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,
-                                                            ListadoAmistadesFragment.AmistadesListListener{
+                                                            ListadoAmistadesFragment.AmistadesListListener,
+                                                            ListadoHistoriasFragment.HistoriasListListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -131,6 +134,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public void onAmistadClicked(Amistad amistad) {
+        Intent intent = new Intent();
+        intent.setClass(this, MiPerfilActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onHistoriaClicked(Historia historia) {
         Intent intent = new Intent();
         intent.setClass(this, MiPerfilActivity.class);
         startActivity(intent);

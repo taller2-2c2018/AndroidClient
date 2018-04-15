@@ -6,12 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.fernandon.android_client.TALLER2.model.Amistad;
 import com.example.fernandon.android_client.TALLER2.model.ListadoAmistadesFragment;
 import com.example.fernandon.android_client.TALLER2.R;
-
-
 import java.util.List;
 
 public class AmistadesListAdapter extends RecyclerView.Adapter<AmistadesListAdapter.AmistadesViewHolder> {
