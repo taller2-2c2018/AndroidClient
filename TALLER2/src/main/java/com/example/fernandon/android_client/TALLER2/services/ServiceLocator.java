@@ -1,9 +1,11 @@
-package com.example.fernandon.android_client.TALLER2;
+package com.example.fernandon.android_client.TALLER2.services;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import com.example.fernandon.android_client.TALLER2.services.CustomService;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;

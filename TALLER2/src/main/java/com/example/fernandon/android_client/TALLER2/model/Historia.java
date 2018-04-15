@@ -1,4 +1,4 @@
-package com.example.fernandon.android_client.TALLER2;
+package com.example.fernandon.android_client.TALLER2.model;
 
 import android.graphics.Bitmap;
 public class Historia {

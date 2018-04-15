@@ -7,6 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.example.fernandon.android_client.TALLER2.ListadoAmistadesFragment"
+    tools:context="com.example.fernandon.android_client.TALLER2.model.ListadoAmistadesFragment"
     tools:listitem="@layout/layout_contacto_pendiente"/>
 

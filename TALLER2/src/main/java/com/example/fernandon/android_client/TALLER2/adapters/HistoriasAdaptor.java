@@ -1,9 +1,11 @@
-package com.example.fernandon.android_client.TALLER2;
+package com.example.fernandon.android_client.TALLER2.adapters;
 
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+
+import com.example.fernandon.android_client.TALLER2.R;
 
 import java.util.ArrayList;
 

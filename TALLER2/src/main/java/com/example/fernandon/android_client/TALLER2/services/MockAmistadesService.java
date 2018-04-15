@@ -1,10 +1,14 @@
-package com.example.fernandon.android_client.TALLER2;
+package com.example.fernandon.android_client.TALLER2.services;
 
 import android.content.Context;
+
+import com.example.fernandon.android_client.TALLER2.model.Amistad;
+import com.example.fernandon.android_client.TALLER2.services.AmistadesService;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockAmistadesService implements AmistadesService{
+public class MockAmistadesService implements AmistadesService {
 
     //private static Context context;
     private List<Amistad> mAmistades;

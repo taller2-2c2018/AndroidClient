@@ -1,4 +1,4 @@
-package com.example.fernandon.android_client.TALLER2;
+package com.example.fernandon.android_client.TALLER2.model;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,11 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.fernandon.android_client.TALLER2.Amistad;
-import com.example.fernandon.android_client.TALLER2.AmistadesService;
-import com.example.fernandon.android_client.TALLER2.ServiceLocator;
 //import com.example.fernandon.android_client.R;
-import com.example.fernandon.android_client.TALLER2.AmistadesListAdapter;
+import com.example.fernandon.android_client.TALLER2.R;
+import com.example.fernandon.android_client.TALLER2.adapters.AmistadesListAdapter;
+import com.example.fernandon.android_client.TALLER2.services.AmistadesService;
+import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
 
 
 public class ListadoAmistadesFragment extends Fragment {

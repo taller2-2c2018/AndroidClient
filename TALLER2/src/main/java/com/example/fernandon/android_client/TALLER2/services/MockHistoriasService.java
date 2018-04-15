@@ -1,10 +1,14 @@
-package com.example.fernandon.android_client.TALLER2;
+package com.example.fernandon.android_client.TALLER2.services;
 import android.content.Context;
+
+import com.example.fernandon.android_client.TALLER2.model.Historia;
+import com.example.fernandon.android_client.TALLER2.services.HistoriasService;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MockHistoriasService implements HistoriasService{
+public class MockHistoriasService implements HistoriasService {
 
     //private static Context context;
     private List<Historia> mHistorias;

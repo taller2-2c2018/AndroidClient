@@ -3,6 +3,10 @@ package com.example.fernandon.android_client.TALLER2;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.fernandon.android_client.TALLER2.services.AmistadesService;
+import com.example.fernandon.android_client.TALLER2.services.MockAmistadesService;
+import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
+
 public class AppMain extends Application {
 
     @Override
