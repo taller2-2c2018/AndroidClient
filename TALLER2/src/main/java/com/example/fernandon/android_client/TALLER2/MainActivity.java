@@ -1,9 +1,11 @@
 package com.example.fernandon.android_client.TALLER2;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -35,19 +37,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                                                             ListadoHistoriasFragment.HistoriasListListener,
                                                             ListadoConversacionesFragment.ConversacionesListListener{
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
 
     @Override
@@ -103,16 +93,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-/*        if (id == R.id.action_logout){
-            exit();
-            return true;
-        }
-        if (id == R.id.action_perfil){
-            goPerfil();
-            return true;
-        }*/
         return super.onOptionsItemSelected(item);
     }
 
@@ -182,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
             final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
             ImageButton b_menu = (ImageButton) rootView.findViewById(R.id.buttonMenu);
@@ -208,8 +189,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             b_notificaciones.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final Context context = rootView.getContext();
-                    Toast.makeText(context, "test3", Toast.LENGTH_SHORT).show();
+                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
+                    ll.removeAllViews();
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_opciones, null));
                 }
             });
 
@@ -228,8 +210,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             b_options.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final Context context = rootView.getContext();
-                    Toast.makeText(context, "test5", Toast.LENGTH_SHORT).show();
+                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
+                    ll.removeAllViews();
+                    ll.addView( getLayoutInflater().inflate(R.layout.activity_opciones, null));
                 }
             });
 
@@ -256,13 +239,26 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            switch(position) {
+                case 0 :
+                    return new ListadoHistoriasFragment();
+                case 1 :
+                    return new ListadoAmistadesFragment();
+                case 2 :
+                    return new ListadoConversacionesFragment();
+                case 3 :
+                    return PlaceholderFragment.newInstance(position + 1);
+                case 4 :
+                    return PlaceholderFragment.newInstance(position + 1);
+            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 1;
+            return 5;
         }
+
     }
 }
