@@ -1,5 +1,6 @@
 package com.example.fernandon.android_client.TALLER2;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,12 +32,17 @@ import com.example.fernandon.android_client.TALLER2.model.Historia;
 import com.example.fernandon.android_client.TALLER2.model.ListadoAmistadesFragment;
 import com.example.fernandon.android_client.TALLER2.model.ListadoConversacionesFragment;
 import com.example.fernandon.android_client.TALLER2.model.ListadoHistoriasFragment;
+import com.example.fernandon.android_client.TALLER2.model.ListadoNotificacionesFragment;
+import com.example.fernandon.android_client.TALLER2.model.Notificacion;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,
                                                             ListadoAmistadesFragment.AmistadesListListener,
                                                             ListadoHistoriasFragment.HistoriasListListener,
-                                                            ListadoConversacionesFragment.ConversacionesListListener{
+                                                            ListadoConversacionesFragment.ConversacionesListListener,
+                                                            ListadoNotificacionesFragment.NotificacionesListListener{
 
+    //private SectionsPagerAdapter mAdapter;
+    //private ActionBar actionBar;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
@@ -93,6 +99,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        if (id == R.id.action_logout){
+            exit();
+            return true;
+
+        }
+        /*if (id == R.id.action_perfil) {
+            goPerfil();
+            return true;
+        }*/
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -100,10 +117,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
-    public void goPerfil(){
+/*    public void goPerfil(){
         Intent intent = new Intent(this, MiPerfilActivity.class);
         startActivity(intent);
-    }
+    }*/
 
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -130,6 +147,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
     @Override
     public void onAmistadClicked(Conversacion conversacion){
+        Intent intent = new Intent();
+        intent.setClass(this, MiPerfilActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onNotificacionClicked(Notificacion notificacion) {
         Intent intent = new Intent();
         intent.setClass(this, MiPerfilActivity.class);
         startActivity(intent);
@@ -206,15 +230,15 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 }
             });
 
-            ImageButton b_options = (ImageButton) rootView.findViewById(R.id.buttonOptions);
-            b_options.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
-                    ll.removeAllViews();
-                    ll.addView( getLayoutInflater().inflate(R.layout.activity_opciones, null));
-                }
-            });
+//            ImageButton b_options = (ImageButton) rootView.findViewById(R.id.buttonOptions);
+//            b_options.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
+//                    ll.removeAllViews();
+//                    ll.addView( getLayoutInflater().inflate(R.layout.activity_opciones, null));
+//                }
+//            });
 
 
             return rootView;
@@ -245,11 +269,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 case 1 :
                     return new ListadoAmistadesFragment();
                 case 2 :
-                    return new ListadoConversacionesFragment();
+                    return new ListadoNotificacionesFragment();
                 case 3 :
-                    return PlaceholderFragment.newInstance(position + 1);
-                case 4 :
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return new ListadoConversacionesFragment();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
@@ -257,7 +279,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 5;
+            return 4;
         }
 
     }

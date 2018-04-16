@@ -9,6 +9,8 @@ import com.example.fernandon.android_client.TALLER2.services.HistoriasService;
 import com.example.fernandon.android_client.TALLER2.services.MockAmistadesService;
 import com.example.fernandon.android_client.TALLER2.services.MockConversacionService;
 import com.example.fernandon.android_client.TALLER2.services.MockHistoriasService;
+import com.example.fernandon.android_client.TALLER2.services.MockNotificacionService;
+import com.example.fernandon.android_client.TALLER2.services.NotificacionesService;
 import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
 
 public class AppMain extends Application {
@@ -26,6 +28,7 @@ public class AppMain extends Application {
         ServiceLocator.bindCustomServiceImplementation(AmistadesService.class, MockAmistadesService.class);
         ServiceLocator.bindCustomServiceImplementation(HistoriasService.class, MockHistoriasService.class);
         ServiceLocator.bindCustomServiceImplementation(ConversacionService.class, MockConversacionService.class);
+        ServiceLocator.bindCustomServiceImplementation(NotificacionesService.class, MockNotificacionService.class);
     }
 
 }

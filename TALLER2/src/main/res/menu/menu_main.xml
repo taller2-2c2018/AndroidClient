@@ -9,7 +9,7 @@
         android:icon="@android:drawable/ic_menu_search"
         app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="android.support.v7.widget.SearchView" />
-    <!--item
+    <item
         android:id="@+id/action_perfil"
         android:orderInCategory="100"
         android:title="@string/action_perfil"
@@ -18,6 +18,6 @@
         android:id="@+id/action_logout"
         android:orderInCategory="100"
         android:title="@string/action_logout"
-        app:showAsAction="never" /-->
+        app:showAsAction="never" />
 
 </menu>

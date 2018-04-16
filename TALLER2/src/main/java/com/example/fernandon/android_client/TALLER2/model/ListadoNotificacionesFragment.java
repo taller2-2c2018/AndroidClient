@@ -8,28 +8,28 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.fernandon.android_client.TALLER2.R;
-import com.example.fernandon.android_client.TALLER2.adapters.HistoriasListAdapter;
-import com.example.fernandon.android_client.TALLER2.services.HistoriasService;
+//import com.example.fernandon.android_client.TALLER2.adapters.HistoriasListAdapter;
+//import com.example.fernandon.android_client.TALLER2.services.HistoriasService;
+import com.example.fernandon.android_client.TALLER2.adapters.NotificacionesListAdapter;
+import com.example.fernandon.android_client.TALLER2.services.NotificacionesService;
 import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
 
+public class ListadoNotificacionesFragment extends Fragment {
 
-public class ListadoHistoriasFragment extends Fragment {
-
-    private HistoriasListListener mHistoriasListListener;
+    private NotificacionesListListener mNotificacionesListListener;
 
 
-    public interface HistoriasListListener {
-        void onHistoriaClicked(Historia historia);
+    public interface NotificacionesListListener {
+        void onNotificacionClicked(Notificacion notificacion);
     }
 
-    public ListadoHistoriasFragment() {
+    public ListadoNotificacionesFragment() {
     }
 
-    public static ListadoHistoriasFragment newInstance(int columnCount) {
-        ListadoHistoriasFragment fragment = new ListadoHistoriasFragment();
+    public static ListadoNotificacionesFragment newInstance(int columnCount) {
+        ListadoNotificacionesFragment fragment = new ListadoNotificacionesFragment();
         return fragment;
     }
 
@@ -49,8 +49,8 @@ public class ListadoHistoriasFragment extends Fragment {
         if (view instanceof RecyclerView) {
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            HistoriasService historiasService = getHistoriasService();
-            recyclerView.setAdapter(new HistoriasListAdapter(historiasService.getHistorias(), mHistoriasListListener));
+            NotificacionesService notificacionesService = getNotificacionesService();
+            recyclerView.setAdapter(new NotificacionesListAdapter(notificacionesService.getNotificaciones(), mNotificacionesListListener));
         }
         return view;
     }
@@ -59,8 +59,8 @@ public class ListadoHistoriasFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof HistoriasListListener) {
-            mHistoriasListListener = ( HistoriasListListener ) context;
+        if (context instanceof NotificacionesListListener) {
+            mNotificacionesListListener = ( NotificacionesListListener ) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement CommerceListListener");
@@ -70,10 +70,10 @@ public class ListadoHistoriasFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mHistoriasListListener = null;
+        mNotificacionesListListener = null;
     }
 
-    private HistoriasService getHistoriasService() {
-        return ServiceLocator.get(HistoriasService.class);
+    private NotificacionesService getNotificacionesService() {
+        return ServiceLocator.get(NotificacionesService.class);
     }
 }

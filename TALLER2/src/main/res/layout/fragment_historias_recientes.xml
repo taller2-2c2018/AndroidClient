@@ -8,4 +8,13 @@
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.example.fernandon.android_client.TALLER2.model.ListadoHistoriasFragment"
-    tools:listitem="@layout/layout_historia_larga"/>
+    tools:listitem="@layout/layout_historia_larga">
+
+    <!--Button
+        android:id="@+id/buttonIngresaHistoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/button_ingrese_historia" /-->
+
+</android.support.v7.widget.RecyclerView>

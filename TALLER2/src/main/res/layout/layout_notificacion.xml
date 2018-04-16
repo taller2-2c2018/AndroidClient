@@ -7,7 +7,7 @@
     android:layout_marginBottom="@dimen/card_view_margin_botton"
     android:layout_marginLeft="@dimen/card_view_margin_left"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     card_view:cardCornerRadius="5dp">
     <LinearLayout
         android:layout_marginTop="@dimen/linearl_margin_top"
@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/imgNotificacion"
             android:layout_marginRight="7dp"
             android:layout_marginLeft="7dp"
             android:layout_width="100dp"
@@ -32,12 +33,14 @@
             android:layout_height="wrap_content">
             <TextView
                 android:text="Emanuel"
+                android:id="@+id/nomNotificacion"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="Emanuel te ha enviado una nueva solicitud de amistad."
+                android:id="@+id/descNotificacion"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:layout_width="wrap_content"
