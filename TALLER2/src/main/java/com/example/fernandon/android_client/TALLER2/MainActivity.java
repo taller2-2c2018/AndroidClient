@@ -34,6 +34,7 @@ import com.example.fernandon.android_client.TALLER2.model.ListadoConversacionesF
 import com.example.fernandon.android_client.TALLER2.model.ListadoHistoriasFragment;
 import com.example.fernandon.android_client.TALLER2.model.ListadoNotificacionesFragment;
 import com.example.fernandon.android_client.TALLER2.model.Notificacion;
+import com.example.fernandon.android_client.TALLER2.model.PerfilFragment;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,
                                                             ListadoAmistadesFragment.AmistadesListListener,
@@ -41,8 +42,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                                                             ListadoConversacionesFragment.ConversacionesListListener,
                                                             ListadoNotificacionesFragment.NotificacionesListListener{
 
-    //private SectionsPagerAdapter mAdapter;
-    //private ActionBar actionBar;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
@@ -61,29 +60,53 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        ImageButton b_menu = findViewById( R.id.buttonMenu );
+        b_menu.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                goMenu();
+            }
+        });
+        ImageButton b_chat = findViewById( R.id.buttonChat );
+        b_chat.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                goChat();
+            }
+        });
+
+        ImageButton b_amigos = findViewById( R.id.buttonAmigos );
+        b_amigos.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                goAmistades();
+            }
+        });
+
+        ImageButton b_notif = findViewById( R.id.buttonNotificaciones );
+        b_notif.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                goNotif();
+            }
+        });
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+               //         .setAction("Action", null).show();
             }
         });
 
     }
 
-    public void goMenu(){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
-    public void goChat(){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
-    public void goNotif(){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
+    public void goMenu(){ mViewPager.setCurrentItem(0); }
+    public void goAmistades(){ mViewPager.setCurrentItem(1); }
+    public void goNotif(){ mViewPager.setCurrentItem(2); }
+    public void goChat(){ mViewPager.setCurrentItem(3); }
+
 
 
     @Override
@@ -99,17 +122,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if (id == R.id.buttonChat)              {goChat(); return true;}
+        if (id == R.id.buttonNotificaciones)    {goNotif(); return true;}
+        if (id == R.id.buttonAmigos)            {goAmistades(); return true;}
+        if (id == R.id.buttonMenu)              {goMenu(); return true;}
+        if (id == R.id.action_logout)           {exit(); return true;}
 
-        if (id == R.id.action_logout){
-            exit();
-            return true;
-
-        }
-        /*if (id == R.id.action_perfil) {
-            goPerfil();
-            return true;
-        }*/
-
+        //if (id == R.id.action_perfil)         {goPerfil(); return true; }
         return super.onOptionsItemSelected(item);
     }
 
@@ -134,29 +153,24 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public void onAmistadClicked(Amistad amistad) {
-        Intent intent = new Intent();
-        intent.setClass(this, MiPerfilActivity.class);
-        startActivity(intent);
     }
 
     @Override
     public void onHistoriaClicked(Historia historia) {
-        Intent intent = new Intent();
-        intent.setClass(this, MiPerfilActivity.class);
-        startActivity(intent);
     }
     @Override
-    public void onAmistadClicked(Conversacion conversacion){
-        Intent intent = new Intent();
-        intent.setClass(this, MiPerfilActivity.class);
-        startActivity(intent);
+    public void onConversacionClickedRechazar(Conversacion conversacion){
+        String rechazar = "rechazo";
+        conversacion.notify();
     }
-
+    @Override
+    public void onConversacionClickedAceptar(Conversacion conversacion){
+    }
     @Override
     public void onNotificacionClicked(Notificacion notificacion) {
-        Intent intent = new Intent();
-        intent.setClass(this, MiPerfilActivity.class);
-        startActivity(intent);
+        // Intent intent = new Intent();
+       // intent.setClass(this, MiPerfilActivity.class);
+       // startActivity(intent);
     }
 
     /**
@@ -188,59 +202,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
             ImageButton b_menu = (ImageButton) rootView.findViewById(R.id.buttonMenu);
             b_menu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
-                    ll.removeAllViews();
-                    ll.addView( getLayoutInflater().inflate(R.layout.activity_historias, null));
+                    v.setVisibility(View.GONE);
                 }
             });
-
-            ImageButton b_amigos = (ImageButton) rootView.findViewById(R.id.buttonAmigos);
-            b_amigos.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
-                    ll.removeAllViews();
-                    ll.addView( getLayoutInflater().inflate(R.layout.activity_amistades_nuevas, null));
-                }
-            });
-
-            ImageButton b_notificaciones = (ImageButton) rootView.findViewById(R.id.buttonNotificaciones);
-            b_notificaciones.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
-                    ll.removeAllViews();
-                    ll.addView( getLayoutInflater().inflate(R.layout.activity_opciones, null));
-                }
-            });
-
-            ImageButton b_chat = (ImageButton) rootView.findViewById(R.id.buttonChat);
-            b_chat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
-                    ll.removeAllViews();
-                    ll.addView( getLayoutInflater().inflate(R.layout.activity_conversaciones, null));
-
-                }
-            });
-
-//            ImageButton b_options = (ImageButton) rootView.findViewById(R.id.buttonOptions);
-//            b_options.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.menu_cambiante);
-//                    ll.removeAllViews();
-//                    ll.addView( getLayoutInflater().inflate(R.layout.activity_opciones, null));
-//                }
-//            });
-
-
             return rootView;
 
         }
@@ -249,10 +217,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         Intent intent = new Intent(this, MiPerfilActivity.class);
         startActivity(intent);
     }
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
+
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {

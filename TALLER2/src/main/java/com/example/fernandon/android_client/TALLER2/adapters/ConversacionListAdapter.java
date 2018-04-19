@@ -65,7 +65,8 @@ public class ConversacionListAdapter extends RecyclerView.Adapter<ConversacionLi
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mConversacionesListListener.onAmistadClicked(conversacion);
+                mConversacionesListListener.onConversacionClickedRechazar(conversacion);
+                mConversacionesListListener.onConversacionClickedAceptar(conversacion);
             }
         });
     }

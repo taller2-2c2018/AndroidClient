@@ -20,7 +20,8 @@ public class ListadoConversacionesFragment extends Fragment {
 
 
     public interface ConversacionesListListener {
-        void onAmistadClicked(Conversacion conversacion);
+        void onConversacionClickedRechazar(Conversacion conversacion);
+        void onConversacionClickedAceptar(Conversacion conversacion);
     }
 
     public ListadoConversacionesFragment() {

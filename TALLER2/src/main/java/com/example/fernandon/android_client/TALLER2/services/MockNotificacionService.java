@@ -1,17 +1,14 @@
 package com.example.fernandon.android_client.TALLER2.services;
 
 import android.content.Context;
-
-import com.example.fernandon.android_client.TALLER2.model.Historia;
+import android.graphics.BitmapFactory;
+import com.example.fernandon.android_client.TALLER2.R;
 import com.example.fernandon.android_client.TALLER2.model.Notificacion;
-
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MockNotificacionService implements NotificacionesService {
 
-    //private static Context context;
     private List<Notificacion> mNotificaciones;
     private Context mContext;
 
@@ -29,8 +26,8 @@ public class MockNotificacionService implements NotificacionesService {
         c1.setDescription("Emanuel te ha enviado una solicitud de amistad.");
         c2.setDescription("Alejandro ha comentado una foto en la que apareces.");
 
-        //c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.pizzaprueba2));
-        //c2.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.images));
+        c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.river4));
+        c2.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.river4));
         mNotificaciones.add(c1);
         mNotificaciones.add(c2);
     }

@@ -1,9 +1,8 @@
 package com.example.fernandon.android_client.TALLER2.services;
 import android.content.Context;
-
+import android.graphics.BitmapFactory;
 import com.example.fernandon.android_client.TALLER2.model.Historia;
-import com.example.fernandon.android_client.TALLER2.services.HistoriasService;
-
+import com.example.fernandon.android_client.TALLER2.R;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +31,10 @@ public class MockHistoriasService implements HistoriasService {
 
         c1.setUbicacion("12 de Abril de 2016");
         c2.setUbicacion("14 de Marzo de 2018");
-        //c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.pizzaprueba2));
-        //c2.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.images));
+
+        c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.river4));
+        c2.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.river4));
+
         mHistorias.add(c1);
         mHistorias.add(c2);
     }

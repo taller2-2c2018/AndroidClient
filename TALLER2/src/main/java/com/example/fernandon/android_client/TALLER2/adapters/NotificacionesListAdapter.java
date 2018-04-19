@@ -1,5 +1,8 @@
 package com.example.fernandon.android_client.TALLER2.adapters;
 
+import android.graphics.Bitmap;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +59,17 @@ public class NotificacionesListAdapter extends RecyclerView.Adapter<Notificacion
     public void onBindViewHolder(NotificacionesViewHolder holder, int position) {
         final Notificacion notificacion = mNotificaciones.get(position);
 
-        holder.mPicture.setImageBitmap(notificacion.getPicture());
+        Bitmap originalBitmap = notificacion.getPicture();
+        if (originalBitmap.getWidth() > originalBitmap.getHeight()){
+            originalBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getHeight(), originalBitmap.getHeight());
+        }else if (originalBitmap.getWidth() < originalBitmap.getHeight()) {
+            originalBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getWidth(), originalBitmap.getWidth());
+        }
+        RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(
+                holder.mView.getContext().getResources(), originalBitmap);
+        roundedDrawable.setCornerRadius(originalBitmap.getHeight());
+
+        holder.mPicture.setImageDrawable(roundedDrawable);
         holder.mTitulo.setText(notificacion.getmTitulo());
         holder.mDescripcion.setText(notificacion.getDescription());
 
