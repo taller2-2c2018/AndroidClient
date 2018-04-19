@@ -20,14 +20,14 @@ public class MockNotificacionService implements NotificacionesService {
     public void updateNotificacionesData() {
 
         mNotificaciones = new ArrayList<>();
-        Notificacion c1 = new Notificacion("Emanuel");
-        Notificacion c2 = new Notificacion("Alejandro");
+        Notificacion c1 = new Notificacion("El Diegote");
+        Notificacion c2 = new Notificacion("Ringo");
 
         c1.setDescription("Emanuel te ha enviado una solicitud de amistad.");
         c2.setDescription("Alejandro ha comentado una foto en la que apareces.");
 
-        c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.river4));
-        c2.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.river4));
+        c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.diego));
+        c2.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ringo));
         mNotificaciones.add(c1);
         mNotificaciones.add(c2);
     }

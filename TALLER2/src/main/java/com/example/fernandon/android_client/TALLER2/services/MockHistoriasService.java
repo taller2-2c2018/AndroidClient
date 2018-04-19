@@ -35,6 +35,9 @@ public class MockHistoriasService implements HistoriasService {
         c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.river4));
         c2.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.river4));
 
+        c1.setPictureUsr(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.diego));
+        c2.setPictureUsr(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.elche));
+
         mHistorias.add(c1);
         mHistorias.add(c2);
     }

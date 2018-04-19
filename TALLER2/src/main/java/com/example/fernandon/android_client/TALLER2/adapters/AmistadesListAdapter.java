@@ -1,5 +1,8 @@
 package com.example.fernandon.android_client.TALLER2.adapters;
 
+import android.graphics.Bitmap;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,9 +53,19 @@ public class AmistadesListAdapter extends RecyclerView.Adapter<AmistadesListAdap
     @Override
     public void onBindViewHolder(AmistadesViewHolder holder, int position) {
         final Amistad amistad = mAmistades.get(position);
-        holder.mPicture.setImageBitmap(amistad.getPicture());
-        holder.mName.setText(amistad.getName());
 
+        Bitmap originalBitmap = amistad.getPicture();
+        if (originalBitmap.getWidth() > originalBitmap.getHeight()){
+            originalBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getHeight(), originalBitmap.getHeight());
+        }else if (originalBitmap.getWidth() < originalBitmap.getHeight()) {
+            originalBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getWidth(), originalBitmap.getWidth());
+        }
+        RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(
+                holder.mView.getContext().getResources(), originalBitmap);
+        roundedDrawable.setCornerRadius(originalBitmap.getHeight());
+
+        holder.mPicture.setImageDrawable(roundedDrawable);
+        holder.mName.setText(amistad.getName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

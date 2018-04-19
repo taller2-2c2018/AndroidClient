@@ -1,10 +1,9 @@
 package com.example.fernandon.android_client.TALLER2.services;
 
 import android.content.Context;
-
+import com.example.fernandon.android_client.TALLER2.R;
+import android.graphics.BitmapFactory;
 import com.example.fernandon.android_client.TALLER2.model.Amistad;
-import com.example.fernandon.android_client.TALLER2.services.AmistadesService;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +22,8 @@ public class MockAmistadesService implements AmistadesService {
         mAmistades = new ArrayList<>();
         Amistad c1 = new Amistad("Fernando Nitz");
         Amistad c2 = new Amistad("Manuel Ortiz");
-        //c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.pizzaprueba2));
-        //c2.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.images));
+        c1.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ringo));
+        c2.setPicture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.markz));
         mAmistades.add(c1);
         mAmistades.add(c2);
     }

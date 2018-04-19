@@ -24,11 +24,11 @@
             <ImageView
                 app:srcCompat="@drawable/ic_sentiment_satisfied_black_18dp"
                 android:id="@+id/imgUsuarioHistoria"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
             <TextView
                 android:text="Fernando Nitz"
-                android:textSize="18dp"
+                android:textSize="26dp"
                 android:textStyle="bold"
                 android:id="@+id/nombreUsuarioHistoria"
                 android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:gravity="center_horizontal"
+            android:gravity="left"
             android:textStyle="bold"
             android:text="@string/txtHistoriaTitulo" />
 

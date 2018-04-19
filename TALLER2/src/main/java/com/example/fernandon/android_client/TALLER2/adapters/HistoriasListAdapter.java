@@ -1,5 +1,8 @@
 package com.example.fernandon.android_client.TALLER2.adapters;
 
+import android.graphics.Bitmap;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,11 +33,13 @@ public class HistoriasListAdapter extends RecyclerView.Adapter<HistoriasListAdap
         private final TextView mDescripcion;
         private final TextView mUbicacion;
         private final TextView mFecha;
+        private final ImageView mPictureUser;
 
 
         HistoriasViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
+            mPictureUser = (ImageView) itemView.findViewById(R.id.imgUsuarioHistoria);
             mPicture = (ImageView) itemView.findViewById(R.id.imageHistoria);
             mTitulo = (TextView) itemView.findViewById(R.id.textTitulo);
             mDescripcion = (TextView) itemView.findViewById(R.id.textDescripcion);
@@ -60,8 +65,18 @@ public class HistoriasListAdapter extends RecyclerView.Adapter<HistoriasListAdap
     public void onBindViewHolder(HistoriasViewHolder holder, int position) {
         final Historia historia = mHistoria.get(position);
 
-        holder.mPicture.setImageBitmap(historia.getPicture());
+        Bitmap originalBitmap = historia.getPictureUsr();
+        if (originalBitmap.getWidth() > originalBitmap.getHeight()){
+            originalBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getHeight(), originalBitmap.getHeight());
+        }else if (originalBitmap.getWidth() < originalBitmap.getHeight()) {
+            originalBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getWidth(), originalBitmap.getWidth());
+        }
+        RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(
+                holder.mView.getContext().getResources(), originalBitmap);
+        roundedDrawable.setCornerRadius(originalBitmap.getHeight());
 
+        holder.mPictureUser.setImageDrawable(roundedDrawable);
+        holder.mPicture.setImageBitmap(historia.getPicture());
         holder.mTitulo.setText(historia.getmTitulo());
         holder.mDescripcion.setText(historia.getDescription());
         holder.mFecha.setText(historia.getFecha());

@@ -8,6 +8,7 @@ public class Historia {
     private String mFecha = "";
     private String mUbicacion = "";
     private Bitmap mPicture;
+    private Bitmap mPictureUser;
 
 
     public Historia(String titulo) {
@@ -21,6 +22,10 @@ public class Historia {
     public void setTitulo(String titulo) {
         this.mTitulo = titulo;
     }
+
+    public void setPictureUsr(Bitmap picture){ this.mPictureUser = picture;}
+
+    public Bitmap getPictureUsr() {return this.mPictureUser;}
 
     public String getDescription() {
         return mDescription;
