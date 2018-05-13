@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         if (id == R.id.buttonNotificaciones)    {goNotif(); return true;}
         if (id == R.id.buttonAmigos)            {goAmistades(); return true;}
         if (id == R.id.buttonMenu)              {goMenu(); return true;}
-        if (id == R.id.action_logout)           {exit(); return true;}
+        //if (id == R.id.action_logout)           {exit(); return true;}
 
         //if (id == R.id.action_perfil)         {goPerfil(); return true; }
         return super.onOptionsItemSelected(item);

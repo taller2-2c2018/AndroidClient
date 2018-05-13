@@ -43,7 +43,7 @@ public class ListadoNotificacionesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         //View view = container.getChildAt(0);
-        View view = inflater.inflate(R.layout.fragment_historias_recientes, container, false);
+        View view = inflater.inflate(R.layout.fragmemt_notificaciones_pendientes, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {

@@ -8,4 +8,5 @@ public interface HistoriasService extends CustomService {
     void updateHistoriasData();
     List<Historia> getHistorias();
     Historia getHistoria(int index);
+    List<String> getUsers();
 }

@@ -54,4 +54,13 @@ public class MockHistoriasService implements HistoriasService {
     public Historia getHistoria(int index) {
         return mHistorias.get(index);
     }
+
+    @Override
+    public List<String> getUsers() {
+        List<String> usuarios = new ArrayList<>();
+        usuarios.add("Fernando Nitz");
+        usuarios.add("Diego Maradona");
+        usuarios.add("Lionel Messi");
+        return usuarios;
+    }
 }

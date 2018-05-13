@@ -9,16 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
+import android.widget.Toast;
 
+import com.example.fernandon.android_client.TALLER2.Filters.SearchFilter;
 import com.example.fernandon.android_client.TALLER2.R;
 import com.example.fernandon.android_client.TALLER2.adapters.HistoriasListAdapter;
 import com.example.fernandon.android_client.TALLER2.services.HistoriasService;
 import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
 
+import java.util.List;
+
 
 public class ListadoHistoriasFragment extends Fragment {
 
     private HistoriasListListener mHistoriasListListener;
+    private RecyclerView mRecyclerView;
+    private SearchView mSearchView;
+
 
     public interface HistoriasListListener {
         void onHistoriaClicked(Historia historia);
@@ -44,13 +52,15 @@ public class ListadoHistoriasFragment extends Fragment {
         //View view = container.getChildAt(0);
         View view = inflater.inflate(R.layout.fragment_historias_recientes, container, false);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            HistoriasService historiasService = getHistoriasService();
-            recyclerView.setAdapter(new HistoriasListAdapter(historiasService.getHistorias(), mHistoriasListListener));
-        }
+        mSearchView = view.findViewById(R.id.searchViewList);
+
+        mRecyclerView = view.findViewById(R.id.listHistoriasRecientes);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        HistoriasService historiasService = getHistoriasService();
+        mRecyclerView.setAdapter(new HistoriasListAdapter(historiasService.getHistorias(), mHistoriasListListener));
+
+
+        setUpSearchView();
         return view;
     }
 
@@ -74,5 +84,36 @@ public class ListadoHistoriasFragment extends Fragment {
 
     private HistoriasService getHistoriasService() {
         return ServiceLocator.get(HistoriasService.class);
+    }
+
+    private void setUpSearchView() {
+        mSearchView.setOnQueryTextListener( new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterUsersByText(newText, false);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterUsersByText(query, true);
+                return true;
+            }
+        });
+    }
+    private void filterUsersByText(String searchText, boolean notifyNoneUsers) {
+        List<String> usuarios = getHistoriasService().getUsers();
+        if (usuarios != null) {
+            SearchFilter saerchFilter = new SearchFilter(searchText);
+            List<String> filteredUsers = saerchFilter.apply(usuarios);
+            loadUsers(filteredUsers, notifyNoneUsers);
+        }
+    }
+    private void loadUsers(List<String> usuarios, boolean notifyNoneUsers) {
+        //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //mRecyclerView.setAdapter(new CommerceListAdapter(commerces, mCommerceListListener));
+        if (notifyNoneUsers && usuarios.size() < 1) {
+            Toast.makeText(getContext(), "No existen usuarios con ese nombre", Toast.LENGTH_LONG).show();
+        }
     }
 }
