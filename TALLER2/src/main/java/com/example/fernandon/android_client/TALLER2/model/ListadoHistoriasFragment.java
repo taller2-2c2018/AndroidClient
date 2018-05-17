@@ -1,5 +1,6 @@
 package com.example.fernandon.android_client.TALLER2.model;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fernandon.android_client.TALLER2.Filters.SearchFilter;
@@ -17,6 +23,7 @@ import com.example.fernandon.android_client.TALLER2.R;
 import com.example.fernandon.android_client.TALLER2.adapters.HistoriasListAdapter;
 import com.example.fernandon.android_client.TALLER2.services.HistoriasService;
 import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
+import com.example.fernandon.android_client.TALLER2.services.UsersService;
 
 import java.util.List;
 
@@ -24,12 +31,17 @@ import java.util.List;
 public class ListadoHistoriasFragment extends Fragment {
 
     private HistoriasListListener mHistoriasListListener;
+    private UsersListListener mUsersListListener;
     private RecyclerView mRecyclerView;
     private SearchView mSearchView;
 
 
     public interface HistoriasListListener {
         void onHistoriaClicked(Historia historia);
+    }
+
+    public interface UsersListListener {
+        void onUserClicked(User user);
     }
 
     public ListadoHistoriasFragment() {
@@ -86,6 +98,10 @@ public class ListadoHistoriasFragment extends Fragment {
         return ServiceLocator.get(HistoriasService.class);
     }
 
+    private UsersService getUsersService() {
+        return ServiceLocator.get(UsersService.class);
+    }
+
     private void setUpSearchView() {
         mSearchView.setOnQueryTextListener( new SearchView.OnQueryTextListener() {
             @Override
@@ -101,6 +117,11 @@ public class ListadoHistoriasFragment extends Fragment {
             }
         });
     }
+
+    private void enterUserPerfil(String query){
+
+    }
+
     private void filterUsersByText(String searchText, boolean notifyNoneUsers) {
         List<String> usuarios = getHistoriasService().getUsers();
         if (usuarios != null) {
@@ -111,7 +132,7 @@ public class ListadoHistoriasFragment extends Fragment {
     }
     private void loadUsers(List<String> usuarios, boolean notifyNoneUsers) {
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //mRecyclerView.setAdapter(new CommerceListAdapter(commerces, mCommerceListListener));
+        //mRecyclerView.setAdapter(new UserListAdapter(usuarios, mUsersListListener));
         if (notifyNoneUsers && usuarios.size() < 1) {
             Toast.makeText(getContext(), "No existen usuarios con ese nombre", Toast.LENGTH_LONG).show();
         }

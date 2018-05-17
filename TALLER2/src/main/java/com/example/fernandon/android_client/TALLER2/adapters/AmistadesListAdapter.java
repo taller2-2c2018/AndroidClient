@@ -3,6 +3,7 @@ package com.example.fernandon.android_client.TALLER2.adapters;
 import android.graphics.Bitmap;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,8 +45,24 @@ public class AmistadesListAdapter extends RecyclerView.Adapter<AmistadesListAdap
 
     @Override
     public AmistadesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_contacto_pendiente, parent, false);
+        final View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_contacto_pendiente, parent, false);
        // AmistadesViewHolder amistadesViewHolder = new AmistadesViewHolder(parent.getChildAt(0));
+
+        AppCompatButton rechazar = v.findViewById(R.id.boton_rechazar_amigo);
+        rechazar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vv) {
+                v.setVisibility(View.GONE);
+            }
+        });
+        AppCompatButton aceptar = v.findViewById(R.id.boton_aceptar_amigo);
+        aceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vv) {
+                v.setVisibility(View.GONE);
+            }
+        });
+
         AmistadesViewHolder amistadesViewHolder = new AmistadesViewHolder(v);
         return amistadesViewHolder;
     }
@@ -66,13 +83,6 @@ public class AmistadesListAdapter extends RecyclerView.Adapter<AmistadesListAdap
 
         holder.mPicture.setImageDrawable(roundedDrawable);
         holder.mName.setText(amistad.getName());
-
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAmistadesListListener.onAmistadClicked(amistad);
-            }
-        });
     }
 
     @Override

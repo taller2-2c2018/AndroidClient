@@ -15,13 +15,28 @@
         android:layout_marginLeft="@dimen/linearl_margin_left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/txtConversacionUserName"
-            android:text="Emanuel"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtConversacionUserName"
+                android:text="Emanuel"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:visibility="gone"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:id="@+id/txtConversacionCantMsjs"
+                android:text="(1)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
         <TextView
             android:id="@+id/txtConversacionUltimoContenido"
             android:text="Emanuel te ha enviado una nueva solicitud de amistad."

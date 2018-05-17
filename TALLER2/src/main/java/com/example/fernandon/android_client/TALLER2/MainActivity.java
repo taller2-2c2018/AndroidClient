@@ -34,13 +34,15 @@ import com.example.fernandon.android_client.TALLER2.model.ListadoConversacionesF
 import com.example.fernandon.android_client.TALLER2.model.ListadoHistoriasFragment;
 import com.example.fernandon.android_client.TALLER2.model.ListadoNotificacionesFragment;
 import com.example.fernandon.android_client.TALLER2.model.Notificacion;
+import com.example.fernandon.android_client.TALLER2.model.Perfil;
 import com.example.fernandon.android_client.TALLER2.model.PerfilFragment;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,
                                                             ListadoAmistadesFragment.AmistadesListListener,
                                                             ListadoHistoriasFragment.HistoriasListListener,
                                                             ListadoConversacionesFragment.ConversacionesListListener,
-                                                            ListadoNotificacionesFragment.NotificacionesListListener{
+                                                            ListadoNotificacionesFragment.NotificacionesListListener,
+                                                            PerfilFragment.PerfilListener{
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 goMenu();
             }
         });
+
         ImageButton b_chat = findViewById( R.id.buttonChat );
         b_chat.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -91,6 +94,15 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             }
         });
 
+        ImageButton b_perfil = findViewById( R.id.buttonOptions );
+        b_perfil.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                goPerfil();
+            }
+        });
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public void goAmistades(){ mViewPager.setCurrentItem(1); }
     public void goNotif(){ mViewPager.setCurrentItem(2); }
     public void goChat(){ mViewPager.setCurrentItem(3); }
-
+    public void goPerfil(){ mViewPager.setCurrentItem(4); }
 
 
     @Override
@@ -126,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         if (id == R.id.buttonNotificaciones)    {goNotif(); return true;}
         if (id == R.id.buttonAmigos)            {goAmistades(); return true;}
         if (id == R.id.buttonMenu)              {goMenu(); return true;}
+        if (id == R.id.buttonOptions)           {goPerfil(); return true;}
         //if (id == R.id.action_logout)           {exit(); return true;}
 
         //if (id == R.id.action_perfil)         {goPerfil(); return true; }
@@ -171,6 +184,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         // Intent intent = new Intent();
        // intent.setClass(this, MiPerfilActivity.class);
        // startActivity(intent);
+    }
+
+    @Override
+    public void onPerfilClicked(Perfil perfil) {
+
     }
 
     /**
@@ -237,6 +255,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     return new ListadoNotificacionesFragment();
                 case 3 :
                     return new ListadoConversacionesFragment();
+                case 4 :
+                    return new PerfilFragment();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
@@ -244,7 +264,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 4;
+            return 5;
         }
 
     }
