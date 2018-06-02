@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class ListadoHistoriasFragment extends Fragment {
 
     private HistoriasListListener mHistoriasListListener;
     private UsersListListener mUsersListListener;
+    private AppCompatButton mButtonNuevaHistoriaView;
     private RecyclerView mRecyclerView;
     private SearchView mSearchView;
 
@@ -65,13 +67,14 @@ public class ListadoHistoriasFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_historias_recientes, container, false);
 
         mSearchView = view.findViewById(R.id.searchViewList);
+        mButtonNuevaHistoriaView = view.findViewById(R.id.buttonIngresaHistoria);
 
         mRecyclerView = view.findViewById(R.id.listHistoriasRecientes);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         HistoriasService historiasService = getHistoriasService();
         mRecyclerView.setAdapter(new HistoriasListAdapter(historiasService.getHistorias(), mHistoriasListListener));
 
-
+        setUpNuevaHistoriaView();
         setUpSearchView();
         return view;
     }
@@ -114,6 +117,17 @@ public class ListadoHistoriasFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 filterUsersByText(query, true);
                 return true;
+            }
+        });
+    }
+
+    private void setUpNuevaHistoriaView() {
+        mButtonNuevaHistoriaView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(v.getContext());
+                dialog.setContentView(R.layout.dialog_conversacion);
+
             }
         });
     }
