@@ -11,7 +11,15 @@
         android:name=".AppMain"
         android:theme="@style/AppTheme"
         android:supportsRtl="true">
-
+        <provider
+            android:name=".GenericFileProvider"
+            android:authorities="${applicationId}.my.package.name.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
         <!--meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id_face"/-->
 
@@ -52,7 +60,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MiPerfilActivity"
+        android:name=".MiPerfilActivity"
+        android:label=" "
+        android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter android:order="1">
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <data
+                android:host="example.com"
+                android:pathPattern="/.*"
+                android:scheme="https"/>
+        </intent-filter>
+    </activity>
+        <activity
+            android:name=".CameraActivity"
             android:label=" "
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter android:order="1">

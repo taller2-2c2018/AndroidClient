@@ -2,7 +2,11 @@ package com.example.fernandon.android_client.TALLER2.model;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,13 +23,16 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fernandon.android_client.TALLER2.CameraActivity;
 import com.example.fernandon.android_client.TALLER2.Filters.SearchFilter;
 import com.example.fernandon.android_client.TALLER2.R;
+
 import com.example.fernandon.android_client.TALLER2.adapters.HistoriasListAdapter;
 import com.example.fernandon.android_client.TALLER2.services.HistoriasService;
 import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
 import com.example.fernandon.android_client.TALLER2.services.UsersService;
 
+import java.io.File;
 import java.util.List;
 
 
@@ -125,8 +132,51 @@ public class ListadoHistoriasFragment extends Fragment {
         mButtonNuevaHistoriaView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(v.getContext());
-                dialog.setContentView(R.layout.dialog_conversacion);
+
+                Intent intent = new Intent(getActivity(), CameraActivity.class);
+                getActivity().startActivity(intent);
+
+                /*Dialog dialog = new Dialog(v.getContext());
+                dialog.setContentView(R.layout.dialog_crear_historia_larga);
+
+                ImageView img = dialog.findViewById(R.id.imgMostrar);
+                Button btn_hacerfoto = dialog.findViewById(R.id.btn_camara);
+
+                btn_hacerfoto.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Creamos el Intent para llamar a la Camara
+                        Intent cameraIntent = new Intent(
+                                android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        //Creamos una carpeta en la memeria del terminal
+                        File imagesFolder = new File(
+                                Environment.getExternalStorageDirectory(), "AndroidFacil");
+                        imagesFolder.mkdirs();
+                        //añadimos el nombre de la imagen
+                        File image = new File(imagesFolder, "foto.jpg");
+                        Uri uriSavedImage = Uri.fromFile(image);
+                        //Le decimos al Intent que queremos grabar la imagen
+                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
+                        //Lanzamos la aplicacion de la camara con retorno (forResult)
+                        startActivityForResult(cameraIntent, 1);
+                    }
+                });
+                dialog.show();
+                */
+/*
+                protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                    //Comprovamos que la foto se a realizado
+                    if (requestCode == 1 && resultCode == RESULT_OK) {
+                        //Creamos un bitmap con la imagen recientemente
+                        //almacenada en la memoria
+                        Bitmap bMap = BitmapFactory.decodeFile(
+                                Environment.getExternalStorageDirectory()+
+                                “/AndroidFacil/”+“foto.jpg”);
+                        //Añadimos el bitmap al imageView para
+                        //mostrarlo por pantalla
+                        img.setImageBitmap(bMap);
+                    }
+                }*/
 
             }
         });
