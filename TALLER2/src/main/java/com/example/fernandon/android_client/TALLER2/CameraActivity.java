@@ -46,18 +46,12 @@ public class CameraActivity extends Activity {
                 cameraIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 //Lanzamos la aplicacion de la camara con retorno (forResult)
                 startActivityForResult(cameraIntent, 1);
-            }});
+            }
+        });
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //Comprovamos que la foto se a realizado
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            //Creamos un bitmap con la imagen recientemente
-            //almacenada en la memoria
-            Bitmap bMap = BitmapFactory.decodeFile(
-                    Environment.getExternalStorageDirectory()+
-                    "/AndroidFacil/"+"foto.jpg");
-            //Añadimos el bitmap al imageView para
-            //mostrarlo por pantalla
+            Bitmap bMap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+ "/AndroidFacil/"+"foto.jpg");
             img.setImageBitmap(bMap);
         }
     }
