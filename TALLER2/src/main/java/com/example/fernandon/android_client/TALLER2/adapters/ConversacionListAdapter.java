@@ -2,6 +2,8 @@ package com.example.fernandon.android_client.TALLER2.adapters;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
@@ -13,6 +15,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -40,6 +43,8 @@ public class ConversacionListAdapter extends RecyclerView.Adapter<ConversacionLi
 
     private final ListadoConversacionesFragment.ConversacionesListListener mConversacionesListListener;
     private List<Conversacion> mConversaciones;
+
+    private Dialog mConversacion;
 
     public ConversacionListAdapter(List<Conversacion> conversaciones, ListadoConversacionesFragment.ConversacionesListListener listener){
         mConversaciones = conversaciones;
@@ -90,24 +95,58 @@ public class ConversacionListAdapter extends RecyclerView.Adapter<ConversacionLi
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List <Mensaje> msjs =  conversacion.getMensajeria();
 
-                Dialog dialog = new Dialog(v.getContext());
-                dialog.setContentView(R.layout.dialog_conversacion);
+                /*
+                * mCalificationsDialog = new Dialog(getContext(), android.R.style.Theme_Holo_Light_Dialog);
+                mCalificationsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                mCalificationsDialog.setContentView(R.layout.dialog_califications);
+                mCalificationsDialog.setCanceledOnTouchOutside(false);
+                mCalificationsDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                mCalificationsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-                lp.copyFrom(dialog.getWindow().getAttributes());
-                lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-                lp.height = WindowManager.LayoutParams.MATCH_PARENT;
-                dialog.getWindow().setAttributes(lp);
+                mCalificationsDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                );
-                LinearLayout ll = dialog.findViewById(R.id.lista_mensajes);
-                //ll.setLayoutParams(params);
+                final EditText calificationEditText = mCalificationsDialog.findViewById(R.id.editText_califications);
+                calificationEditText.setText("");
 
+
+                LinearLayout ll = mCalificationsDialog.findViewById(R.id.puntuacion_comercio);
+                final ImageView e1 = ll.findViewById(R.id.estrella1);
+
+                e1.setClickable(true);
+
+                Button acceptButton = mCalificationsDialog.findViewById(R.id.button_accept_calification);
+                Button cancelButton = mCalificationsDialog.findViewById(R.id.button_cancel_calification);
+                acceptButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mCalificacion = calificationEditText.getText().toString();
+                        //updateCalificationsValue();
+                        mCalificationsDialog.dismiss();
+                    }
+                });
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mCalificationsDialog.dismiss();
+                    }
+                });
+
+                mCalificationsDialog.show();
+                * */
+
+
+                List<Mensaje> msjs = conversacion.getMensajeria();
+
+                mConversacion = new Dialog(v.getContext(), android.R.style.Theme_Holo_Light_Dialog);
+                mConversacion.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                mConversacion.setContentView(R.layout.dialog_conversacion);
+                mConversacion.setCanceledOnTouchOutside(false);
+                mConversacion.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                mConversacion.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                mConversacion.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+
+                LinearLayout ll = mConversacion.findViewById(R.id.lista_mensajes);
                 for ( Mensaje msj: msjs ) {
                     CardView cv = createCardView(v.getContext());
                     TextView text = createTextView(v.getContext());
@@ -115,55 +154,28 @@ public class ConversacionListAdapter extends RecyclerView.Adapter<ConversacionLi
                     text.setText(msj.getMensaje());
                     cv.addView(text);
 
-                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                             RelativeLayout.LayoutParams.WRAP_CONTENT,
                             RelativeLayout.LayoutParams.WRAP_CONTENT);
 
                     if (msj.getEsEmisor() == 1 ){
-                        layoutParams.addRule(RelativeLayout.ALIGN_LEFT);
+                        //cv.setForegroundGravity(View.FOCUS_LEFT);
+                        layoutParams.gravity = Gravity.LEFT;
                         //cv.setForegroundGravity(Gravity.LEFT);
                     }
                     else{
-                        layoutParams.addRule(RelativeLayout.ALIGN_RIGHT);
+                        layoutParams.gravity = Gravity.RIGHT;
                         //cv.setForegroundGravity(Gravity.RIGHT);
                         cv.setCardBackgroundColor(ContextCompat.getColor(v.getContext(), R.color.verde));
                     }
-                    layoutParams.setMargins(5, 2, 5, 2);
+                    layoutParams.setMargins(5, 10, 5, 0);
                     cv.setLayoutParams(layoutParams);
-
                     ll.addView(cv);
-
                 }
-                ll.addView(createMandadoMsjs(v.getContext()));
-                dialog.show();
+
+                mConversacion.show();
             }
         });
-    }
-
-    private LinearLayout createMandadoMsjs (Context context) {
-        LinearLayout ll = new LinearLayout(context);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        params.setMargins(8, 10, 16, 8);
-        ll.setLayoutParams(params);
-        ll.setOrientation(LinearLayout.HORIZONTAL);
-
-        EditText et = new EditText(context);
-        ImageButton acb = new ImageButton(context);
-
-        Drawable dw = ResourcesCompat.getDrawable(context.getResources(), R.drawable.send_button, null);
-        acb.setImageDrawable(dw);
-
-        acb.setForegroundGravity(View.FOCUS_RIGHT);
-        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(100,100 );
-        params2.weight = 1;
-        acb.setLayoutParams(params2);
-
-        ll.addView(et);
-        ll.addView(acb);
-        return ll;
     }
 
     private CardView createCardView(Context context) {
