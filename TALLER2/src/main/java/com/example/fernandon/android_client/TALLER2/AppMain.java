@@ -12,6 +12,8 @@ import com.example.fernandon.android_client.TALLER2.services.MockHistoriasServic
 import com.example.fernandon.android_client.TALLER2.services.MockNotificacionService;
 import com.example.fernandon.android_client.TALLER2.services.NotificacionesService;
 import com.example.fernandon.android_client.TALLER2.services.ServiceLocator;
+import com.example.fernandon.android_client.TALLER2.services.facebook.BaseFacebookService;
+import com.example.fernandon.android_client.TALLER2.services.facebook.FacebookService;
 
 public class AppMain extends Application {
 
@@ -25,6 +27,7 @@ public class AppMain extends Application {
 
     private void bindServices(Context applicationContext) {
         ServiceLocator.init(applicationContext);
+        //ServiceLocator.bindCustomServiceImplementation(FacebookService.class, BaseFacebookService.class);
         ServiceLocator.bindCustomServiceImplementation(AmistadesService.class, MockAmistadesService.class);
         ServiceLocator.bindCustomServiceImplementation(HistoriasService.class, MockHistoriasService.class);
         ServiceLocator.bindCustomServiceImplementation(ConversacionService.class, MockConversacionService.class);
